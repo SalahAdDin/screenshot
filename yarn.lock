@@ -9187,6 +9187,13 @@ schema-utils@^2.5.0, schema-utils@^2.6.0, schema-utils@^2.6.1, schema-utils@^2.6
     ajv "^6.12.0"
     ajv-keywords "^3.4.1"
 
+screenshotmachine@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/screenshotmachine/-/screenshotmachine-2.0.0.tgz#25a8b63fadb4fc5a9e2017b854618a94d5c96545"
+  integrity sha512-KM/XWdln9a812YhUO6WGazxBITBn17WJ7YP4j8/xFd3fDFWSGSjC4O5Y3PO8aYyGmMpW9Q4vRmj+V1+bIudxyA==
+  dependencies:
+    request "^2.88.0"
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
