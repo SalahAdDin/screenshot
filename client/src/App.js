@@ -1,5 +1,3 @@
-import fs from "fs";
-// import { google } from "googleapis";
 import React, { useState } from "react";
 import screenshotmachine from "screenshotmachine";
 import logo from "./logo.svg";
@@ -9,6 +7,7 @@ import "./App.css";
 
 function App() {
   const [url, setUrl] = useState("");
+  const [id, setId] = useState(1);
 
   const handleOnChangeValue = (e) => {
     setUrl(e.target.value);
@@ -28,27 +27,29 @@ function App() {
       delay: "200",
       zoom: "100",
     };
-    console.log("====================================");
-    console.log(url, options, customerKey);
-    console.log("====================================");
     if (url) {
-      let filename = `ID_${url.split(".")[1]}`;
+      let filename = `${id}_${url.split(".")[1]}.jpg`;
 
       const apiURL = screenshotmachine.generateScreenshotApiUrl(
         customerKey,
         secretPhrase,
         options
       );
+      const res = fetch("http://localhost:9000/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          screenshot: {
+            apiURL: apiURL,
+            filename: filename,
+          },
+        }),
+      });
+      setId(id + 1);
 
-      console.log("====================================");
-      console.log(apiURL, filename);
-      console.log("====================================");
-
-      // screenshotmachine.readScreenshot(apiURL).pipe(
-      //   fs.createWriteStream(filename).on("close", () => {
-      //     console.log("Screenshot saved as " + filename);
-      //   })
-      // );
+      // TODO: send an alert to notify it was good
     }
   };
 
